@@ -1,16 +1,14 @@
 import { initializeApp } from 'firebase/app';
-// import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
-  signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+// import { enableIndexedDbPersistence } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDAXD-BMAmXZe4nUcwlF_tY6AXTc8JHNVM',
   authDomain: 'expenser-54158.firebaseapp.com',
@@ -18,12 +16,10 @@ const firebaseConfig = {
   storageBucket: 'expenser-54158.appspot.com',
   messagingSenderId: '964942493468',
   appId: '1:964942493468:web:0cb10aeae50e11e05facd9',
-  // measurementId: 'G-KP8CY64WB1',
 };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(firebaseApp);
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
