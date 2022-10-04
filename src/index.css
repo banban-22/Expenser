@@ -30,6 +30,12 @@
   opacity: 0.75;
 }
 
+.nav-link {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
 .modal-container {
   position: relative;
   flex-direction: column;

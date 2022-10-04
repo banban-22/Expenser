@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+// import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth';
-
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -18,12 +18,12 @@ const firebaseConfig = {
   storageBucket: 'expenser-54158.appspot.com',
   messagingSenderId: '964942493468',
   appId: '1:964942493468:web:0cb10aeae50e11e05facd9',
-  measurementId: 'G-KP8CY64WB1',
+  // measurementId: 'G-KP8CY64WB1',
 };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
+// const analytics = getAnalytics(firebaseApp);
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
@@ -35,7 +35,8 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 export const database = getFirestore();
 
-export const createUserDoc = async (userAuth) => {
+export const createUserDoc = async (userAuth, additionalInfo = {}) => {
+  if (!userAuth) return;
   const userDocRef = doc(database, 'users', userAuth.uid);
   console.log(userDocRef);
 
@@ -53,11 +54,16 @@ export const createUserDoc = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
     } catch (error) {
       console.log('error occurs', error.message);
     }
   }
-
   return userDocRef;
+};
+
+export const createAuthEpass = async (email, password) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
