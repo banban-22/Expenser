@@ -11,10 +11,13 @@ const Nav = () => {
         <Link className="nav-link" to="dashboard">
           Dashboard
         </Link>
+        <Link className="nav-link" to="activities">
+          Activities
+        </Link>
         <Link className="nav-link" to="currency-exchange">
           Currency Exchanger
         </Link>
-        <div className="mx-10 p-4 border-black border-solid border-2 rounded-full">
+        <div className="mx-10 p-4 border-blue border-solid border-2 rounded-full">
           <Link className="nav-link" to="signin">
             Sign In
           </Link>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import InputForm from '../input-form/input-form';
 import { createAuthEpass, createUserDoc } from '../../utils/firebase/firebase';
+import '../../index.css';
 
 const defaultForm = {
   displayName: '',
@@ -48,7 +49,7 @@ const SignupForm = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold">Don't have an account?</h1>
-      <h2 className="text-lg">Sign Up</h2>
+      <h2 className="text-lg mt-8 ">Sign Up</h2>
       <p> with your email and password</p>
 
       <form className="flex flex-col text-left" onSubmit={handleSubmit}>
@@ -88,10 +89,7 @@ const SignupForm = () => {
           value={confirmedPassword}
         />
 
-        <button
-          type="submit"
-          className="mt-10 border-solid border-black border-2 rounded-full hover:bg-black hover:text-white"
-        >
+        <button type="submit" className="sign-up-btn">
           Sign Up
         </button>
       </form>
