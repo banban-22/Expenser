@@ -6,8 +6,6 @@ const Dashboard = () => {
   return (
     <div className="container">
       <div>
-        {/* Budget Card */}
-        {/* <BudgetCard name="Total Expense" amount={1200} max={1500}></BudgetCard> */}
         <div className="container z-1">
           <div>
             <BudgetCard

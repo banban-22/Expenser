@@ -5,6 +5,7 @@ const events = (state = [], action) => {
         title: action.title,
         amount: action.amount,
         date: action.date,
+        total: 0,
       };
       const length = state.length;
       const id = length === 0 ? 1 : state[length - 1].id + 1;
