@@ -16,7 +16,7 @@ const Activities = () => {
   const [editID, setEditID] = useState(null);
 
   // const [text, setText] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState([]);
   const [title, setTitle] = useState(getInitialState);
   const [date, setDate] = useState('');
 
@@ -47,7 +47,7 @@ const Activities = () => {
 
     setDate('');
     setTitle('');
-    setAmount('');
+    setAmount([]);
   };
 
   const titleChange = (e) => {
@@ -61,9 +61,10 @@ const Activities = () => {
     setAmount(specificItem.amount);
   };
 
-  const deleteBtn = () => {
+  const deleteBtn = ({ event }) => {
+    const { id } = event;
     const DELETE_EVENT = 'DELETE_EVENT';
-    dispatch({ type: DELETE_EVENT });
+    dispatch({ type: DELETE_EVENT, id });
   };
 
   const btnDisable = date === '' || amount === '';
@@ -99,7 +100,7 @@ const Activities = () => {
             onChange={(e) => setDate(e.target.value)}
           />
           <input
-            type="text"
+            type="number"
             placeholder="1,000"
             className="input focus:outline-blue"
             value={amount}
@@ -135,10 +136,10 @@ const Activities = () => {
       <section className="w-9/12 mx-auto">
         <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
           <thead className="uppercase border-b">
-            <tr>
+            <tr key={this.event.id}>
               <th className="py-3 px-6">No.</th>
               <th className="py-3 px-6">Date</th>
-              <th className="py-3 px-6">Title</th>
+              <th className="py-3 px-6">Category</th>
               <th className="py-3 px-6">Amount</th>
             </tr>
           </thead>

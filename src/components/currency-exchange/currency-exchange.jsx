@@ -1,0 +1,138 @@
+import React from 'react';
+import { useState, useEffect } from 'react';
+
+const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+
+function CurrencyExchange() {
+  // const [currencies, setCurrencies] = useState([]);
+  let [currency1, setCurrency1] = useState([]);
+  let [currency2, setCurrency2] = useState([]);
+  // const [rate, setRate] = useState([]);
+
+  const fetchCurrency = async () => {
+    const url = `https://v6.exchangerate-api.com/v6/${API_KEY}/codes`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setCurrency1(data);
+      setCurrency1([...Object.entries(data.supported_codes)]);
+      setCurrency2([...Object.entries(data.supported_codes)]);
+      // console.log(data);
+      // console.log(currencies);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrency();
+  }, []);
+
+  const currHandleChange1 = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+
+  const currHandleChange2 = (e) => {
+    e.preventDefault();
+    console.log('handleChange2:', e.target.value);
+  };
+
+  const currInvert = (e) => {
+    e.preventDefault();
+    console.log('clicked!');
+  };
+
+  const amountChangeHandler1 = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+
+  const amountChangeHandler2 = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+
+  const currArr1 = Object.values(currency1);
+  const currArr2 = Object.values(currency2);
+  // console.log(currArr1);
+
+  return (
+    <main className="mt-20">
+      {/* Currency1 */}
+      <section className="flex flex-col w-full text-center justify-center">
+        <div className="mb-10 flex flex-row justify-center items-center">
+          <p className="font-bold text-2xl text-gray-400 mr-10">From</p>
+          <select
+            className="border-solid border-2 border-blue p-4 rounded-2xl bg-white focus:outline-none"
+            onChange={currHandleChange1}
+          >
+            {currArr1.map((currency, index) => {
+              return (
+                <option key={index}>
+                  {[...currency][1][0]} ({[...currency][1][1]})
+                </option>
+              );
+            })}
+          </select>
+          <input
+            type="number"
+            id="amount-one"
+            placeholder="0"
+            value="1"
+            onChange={amountChangeHandler1}
+            className="ml-20 border-b-blue border-b-2 pb-4 text-center focus:outline-none"
+          />
+        </div>
+
+        {/* Arrow Icon */}
+        <div
+          className="text-center mx-auto my-auto hover:cursor-pointer"
+          onClick={currInvert}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
+            />
+          </svg>
+        </div>
+
+        {/* Currency2 */}
+        <div className="mt-10 flex flex-row justify-center items-center">
+          <p className="font-bold text-2xl text-gray-400 mr-20">To</p>
+          <select
+            onChange={currHandleChange2}
+            className="border-solid border-2 border-blue p-4 rounded-2xl bg-white focus:outline-none"
+          >
+            {currArr2.map((currency, index) => {
+              return (
+                <option key={index}>
+                  {[...currency][1][0]} ({[...currency][1][1]})
+                </option>
+              );
+            })}
+          </select>
+          <input
+            type="number"
+            id="amount-one"
+            value="1"
+            onChange={amountChangeHandler2}
+            className="ml-20 border-b-blue border-b-2 pb-4 text-center focus:outline-none"
+          />
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export default CurrencyExchange;

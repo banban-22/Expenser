@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Nav from './components/navigation/navigation';
 import Home from './components/home/home';
-import CurrencyExchange from './components/currency-exchange/currency-exchnage';
+import CurrencyExchange from './components/currency-exchange/currency-exchange';
 import Dashboard from './components/dashboard/dashboard';
 import SignIn from './routes/sign-in/sign-in';
 import Activities from './components/activities/activties';
