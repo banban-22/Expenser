@@ -27,9 +27,9 @@ const Activities = () => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   const calcTotal = () => {
-    const totalExpenseAmount = amount.reduce((total, amount) => {
-      return total + amount;
-    }, 0);
+    const totalExpenseAmount = amount.reduce((totalAmount, amount) => {
+      return totalAmount + amount;
+    }, []);
 
     setTotalAmount(totalExpenseAmount);
   };
@@ -136,7 +136,7 @@ const Activities = () => {
       <section className="w-9/12 mx-auto">
         <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
           <thead className="uppercase border-b">
-            <tr key={this.event.id}>
+            <tr>
               <th className="py-3 px-6">No.</th>
               <th className="py-3 px-6">Date</th>
               <th className="py-3 px-6">Category</th>
