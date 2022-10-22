@@ -42,6 +42,8 @@ function CurrencyExchange() {
   const currInvert = (e) => {
     e.preventDefault();
     console.log('clicked!');
+
+    if (currArr1 !== currArr2) currArr1 = currArr2;
   };
 
   const amountChangeHandler1 = (e) => {
@@ -54,8 +56,8 @@ function CurrencyExchange() {
     console.log(e.target.value);
   };
 
-  const currArr1 = Object.values(currency1);
-  const currArr2 = Object.values(currency2);
+  let currArr1 = Object.values(currency1);
+  let currArr2 = Object.values(currency2);
   // console.log(currArr1);
 
   return (
