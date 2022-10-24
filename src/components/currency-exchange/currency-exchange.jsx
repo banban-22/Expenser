@@ -1,13 +1,16 @@
+import { data } from 'autoprefixer';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+const rateUrl = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`;
 
 function CurrencyExchange() {
   // const [currencies, setCurrencies] = useState([]);
   let [currency1, setCurrency1] = useState([]);
   let [currency2, setCurrency2] = useState([]);
-  // const [rate, setRate] = useState([]);
+  const [amount1, setAmount1] = useState(1);
+  const [rate, setRate] = useState({});
 
   const fetchCurrency = async () => {
     const url = `https://v6.exchangerate-api.com/v6/${API_KEY}/codes`;
@@ -41,14 +44,17 @@ function CurrencyExchange() {
 
   const currInvert = (e) => {
     e.preventDefault();
-    console.log('clicked!');
+    // console.log('clicked!');
 
-    if (currArr1 !== currArr2) currArr1 = currArr2;
+    if (currArr1.value !== currArr2.value) currArr1.value = currArr2.value;
+    const {} = console.log(currArr1.value);
   };
 
   const amountChangeHandler1 = (e) => {
     e.preventDefault();
     console.log(e.target.value);
+    const value = e.target.value;
+    setAmount1(value);
   };
 
   const amountChangeHandler2 = (e) => {
@@ -58,7 +64,7 @@ function CurrencyExchange() {
 
   let currArr1 = Object.values(currency1);
   let currArr2 = Object.values(currency2);
-  // console.log(currArr1);
+  // console.log(currArr2);
 
   return (
     <main className="mt-20">
@@ -81,8 +87,7 @@ function CurrencyExchange() {
           <input
             type="number"
             id="amount-one"
-            placeholder="0"
-            value="1"
+            value={amount1}
             onChange={amountChangeHandler1}
             className="ml-20 border-b-blue border-b-2 pb-4 text-center focus:outline-none"
           />
@@ -138,3 +143,31 @@ function CurrencyExchange() {
 }
 
 export default CurrencyExchange;
+
+const CurrencyExchanger = () => {
+  const [info, setInfo] = useState([]);
+  const [input, setInput] = useState(0);
+  const [from, setFrom] = useState('cad');
+  const [to, setTo] = useState('jpy');
+  const [options, setOptions] = useState([]);
+  const [output, setOutput] = useState(0);
+
+  useEffect(() => {
+    const url = `https://v6.exchangerate-api.com/v6/${API_KEY}/codes`;
+
+    try {
+      const fetchData = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+      };
+    } catch (err) {
+      console.log(err);
+    }
+    setInfo(data);
+  }, [from]);
+
+  useEffect(() => {
+    setOptions(Object.keys(info));
+    convert();
+  }, [info]);
+};

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-tailwind/react';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-// import { BudgetProvider } from './context/BudgetContext';
+// import { globalContext } from './context/globalContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,9 +12,9 @@ root.render(
     <BrowserRouter>
       <ThemeProvider>
         <App />
-        {/* <BudgetProvider>
+        {/* <globalContext>
         <App />
-      </BudgetProvider> */}
+      </globalContext> */}
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
