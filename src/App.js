@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Nav from './components/navigation/navigation';
+import Nav from './components/Navigation';
 import Home from './components/home/home';
-import CurrencyExchange from './components/currency-exchange/currency-exchange';
-import Dashboard from './components/dashboard/dashboard';
+import CurrencyExchange from './components/CurrencyExchange';
+import Dashboard from './components/Dashboard';
 import SignIn from './routes/sign-in/sign-in';
-import Activities from './components/activities/activties';
+import Activities from './components/Activties';
 
 function App() {
   return (

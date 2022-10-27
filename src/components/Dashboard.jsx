@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import BudgetCard from '../BudgetCard';
-import '../../index.css';
+import BudgetCard from './BudgetCard';
+import '../index.css';
 
 const Dashboard = () => {
   return (

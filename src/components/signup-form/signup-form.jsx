@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import InputForm from '../input-form/input-form';
+import InputForm from '../InputForm';
 import { createAuthEpass, createUserDoc } from '../../utils/firebase/firebase';
 import '../../index.css';
 

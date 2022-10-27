@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from 'react';
-import reducer from '../reducers/reducers';
+import reducer from './reducers/reducers';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const Activities = () => {
