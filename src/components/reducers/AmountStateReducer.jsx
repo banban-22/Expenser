@@ -1,4 +1,4 @@
-const events = (state = [], action) => {
+const AmountStateReducer = (state, action) => {
   const CREATE_EVENT = 'CREATE_EVENT';
   // const EDIT_EVENT = 'EDIT_EVENT';
   const DELETE_EVENT = 'DELETE_EVENT';
@@ -23,4 +23,4 @@ const events = (state = [], action) => {
   }
 };
 
-export default events;
+export default AmountStateReducer;
