@@ -13,9 +13,10 @@ const AmountState = (props) => {
 
   const [form, handleForm] = useState({
     id: null,
-    desc: '',
+    title: '',
     value: null,
     type: '',
+    date: null,
   });
 
   const handleValues = (e) => {
@@ -25,15 +26,14 @@ const AmountState = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-  const CREATE_EVENT = 'CREATE_EVENT';
-  const DELETE_EVENT = 'DELETE_EVENT';
-  const addTransaction = (e) => {
-    e.preventDefault();
 
+  const addTransaction = (e) => {
+    const CREATE_EVENT = 'CREATE_EVENT';
     const newTransaction = {
       id: form.id,
-      desc: form.desc,
-      value: Number(form.value),
+      title: form.title,
+      date: form.date,
+      amount: Number(form.value),
       type: form.value >= 0 ? 'positive' : 'negative',
     };
 
@@ -41,9 +41,12 @@ const AmountState = (props) => {
       type: CREATE_EVENT,
       payload: newTransaction,
     });
+
+    e.preventDefault();
   };
 
   const removeTransaction = (id) => {
+    const DELETE_EVENT = 'DELETE_EVENT';
     dispatch({
       type: DELETE_EVENT,
       payload: id,

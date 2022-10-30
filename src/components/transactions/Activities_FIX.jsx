@@ -1,19 +1,39 @@
-import React, { useState, useContext, useReducer } from 'react';
+/* import React, { useState, useReducer } from 'react';
 import reducer from './reducers/reducers';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import AmountStateContext from '../context/AmountStateContext';
+import { toCurrency } from '../CurrencyExchange';
 
-const AmountInput = () => {
-  const { addTransaction, handleValues } = useContext(AmountStateContext);
+const Activities = () => {
+  const getInitialState = () => {
+    const value = 'Housing';
+    return value;
+  };
 
   const [budgetModal, setBudgetModal] = useState(false);
   const [expenseModal, setExpenseModal] = useState(false);
 
+  // Edit / Remove Items
+  const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
+
+  // const [text, setText] = useState('');
   const [amount, setAmount] = useState([]);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(getInitialState);
   const [date, setDate] = useState('');
 
+  // reducer
   const [state, dispatch] = useReducer(reducer, []);
+
+  // Total Count
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  const calcTotal = () => {
+    const totalExpenseAmount = amount.reduce((totalAmount, amount) => {
+      return totalAmount + amount;
+    }, []);
+
+    setTotalAmount(totalExpenseAmount);
+  };
 
   const addBudget = (e) => {
     e.preventDefault();
@@ -29,6 +49,17 @@ const AmountInput = () => {
     setDate('');
     setTitle('');
     setAmount([]);
+  };
+
+  const titleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const editItem = (id) => {
+    const specificItem = state.find((item) => item.id === state.id);
+    setIsEditing(true);
+    setEditID(id);
+    setAmount(specificItem.amount);
   };
 
   const deleteBtn = ({ event }) => {
@@ -63,31 +94,25 @@ const AmountInput = () => {
           >
             &times;
           </button>
-
-          <form onSubmit={addTransaction}>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="categories"
-            />
-            <input
-              type="number"
-              name="value"
-              placeholder="1,000"
-              value={amount}
-              onChange={handleValues}
-              className="input focus:outline-blue"
-            />
-            <input
-              type="text"
-              name="desc"
-              placeholder="Put Category"
-              value={handleValues}
-              onChange={handleValues}
-              className="categories focus:outline-blue"
-            />
-            {/* <option value="Housing">Housing</option>
+          <input
+            type="date"
+            className="categories"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="1,000"
+            className="input focus:outline-blue"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <select
+            className="categories focus:outline-blue"
+            value={title}
+            onChange={titleChange}
+          >
+            <option value="Housing">Housing</option>
             <option value="Transportation">Transportation</option>
             <option value="Food">Food</option>
             <option value="Child Expense">Child Expense</option>
@@ -98,15 +123,14 @@ const AmountInput = () => {
             <option value="Pets">Pets</option>
             <option value="Others">Others</option>
             <option value="Income">Income</option>
-          </input> */}
-            <button
-              className="modal-button hover:opacity-75 hover:translate-y-1 hover:translate-x-1"
-              onClick={addBudget}
-              disabled={btnDisable}
-            >
-              Add
-            </button>
-          </form>
+          </select>
+          <button
+            className="modal-button hover:opacity-75 hover:translate-y-1 hover:translate-x-1"
+            onClick={addBudget}
+            disabled={btnDisable}
+          >
+            Add
+          </button>
         </div>
       </section>
 
@@ -134,7 +158,11 @@ const AmountInput = () => {
                   <td className="py-3 px-6">{event.amount}</td>
                   <td className="py-3 px-6">{event.amount}</td>
                   <td>
-                    <button type="button" className="mr-8">
+                    <button
+                      type="button"
+                      className="mr-8"
+                      onClick={() => editItem(state.id)}
+                    >
                       <FaEdit />
                     </button>
                     <button type="button" onClick={deleteBtn}>
@@ -150,8 +178,8 @@ const AmountInput = () => {
               <td></td>
               <td></td>
               <td></td>
-              {/* <td>{`Total: ${totalAmount}`}</td>
-              <td>{`Total: ${totalAmount}`}</td> */}
+              <td>{`Total: ${totalAmount}`}</td>
+              <td>{`Total: ${totalAmount}`}</td>
             </tr>
           </tbody>
         </table>
@@ -160,4 +188,5 @@ const AmountInput = () => {
   );
 };
 
-export default AmountInput;
+export default Activities;
+ */
