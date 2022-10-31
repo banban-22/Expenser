@@ -1,6 +1,6 @@
 import React from 'react';
 import AmountInput from './AmountInput';
-import AmountItem from './AmountItem';
+// import AmountItem from './AmountItem';
 import ExpenserApp from './ExpenserApp';
 
 // reducer
@@ -13,9 +13,9 @@ const Activities = () => {
       <BalanceState>
         <AmountState>
           <AmountInput>
-            <AmountItem>
-              <ExpenserApp />
-            </AmountItem>
+            {/* <AmountItem> */}
+            <ExpenserApp />
+            {/* </AmountItem> */}
           </AmountInput>
         </AmountState>
       </BalanceState>

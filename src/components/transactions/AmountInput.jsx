@@ -63,7 +63,7 @@ const AmountInput = () => {
             />
             <input
               type="submit"
-              className="modal-button hover:opacity-75 hover:translate-y-1 hover:translate-x-1"
+              className="modal-button hover:cursor-pointer hover:opacity-75 hover:translate-y-1 hover:translate-x-1"
               value="Add"
             />
             {/* <button

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import AmountInput from './AmountInput';
+// import AmountInput from './AmountInput';
 import AmountItem from './AmountItem';
 
 // reducer
@@ -21,7 +21,7 @@ const ExpenserApp = () => {
     addBalance({ totalBalance: valueTotal });
 
     // income
-    let positives = transactions.filter((item) => item.type == 'positive');
+    let positives = transactions.filter((item) => item.type === 'positive');
 
     // sum of positive values
     const sumPositives = positives.reduce((valAcc, valArr) => {
@@ -32,7 +32,7 @@ const ExpenserApp = () => {
     addBalance({ income: sumPositives });
 
     // expense
-    let negatives = transactions.filter((item) => item.type == 'negative');
+    let negatives = transactions.filter((item) => item.type === 'negative');
     // sum of negative value
     const sumNegatives = negatives.reduce((valAcc, valArr) => {
       return valAcc + valArr.value;
@@ -40,7 +40,7 @@ const ExpenserApp = () => {
     console.log('SumNegatives:', sumNegatives);
 
     addBalance({ expense: sumNegatives });
-  }, [transactions]);
+  }, [addBalance, transactions]);
 
   return (
     <div>
@@ -54,17 +54,17 @@ const ExpenserApp = () => {
             <th className="py-3 px-6">Amount in ()</th>
           </tr>
         </thead>
+        <tbody>
+          {transactions.map((transaction) => (
+            <AmountItem
+              key={transaction.id}
+              transaction={transaction}
+              formatMoney={formatMoney}
+              removeTransaction={removeTransaction}
+            />
+          ))}
+        </tbody>
       </table>
-      <ul>
-        {transactions.map((transaction) => (
-          <AmountItem
-            key={transaction.id}
-            transaction={transaction}
-            formatMoney={formatMoney}
-            removeTransaction={removeTransaction}
-          />
-        ))}
-      </ul>
     </div>
   );
 };

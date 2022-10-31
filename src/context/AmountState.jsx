@@ -33,8 +33,8 @@ const AmountState = (props) => {
       id: form.id,
       title: form.title,
       date: form.date,
-      amount: Number(form.value),
-      type: form.value >= 0 ? 'positive' : 'negative',
+      amount: Number(form.amount),
+      type: form.amount >= 0 ? 'positive' : 'negative',
     };
 
     dispatch({
