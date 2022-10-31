@@ -14,9 +14,9 @@ const AmountState = (props) => {
   const [form, handleForm] = useState({
     id: null,
     title: '',
-    value: null,
-    type: '',
     date: null,
+    amount: null,
+    type: '',
   });
 
   const handleValues = (e) => {
@@ -70,26 +70,3 @@ const AmountState = (props) => {
 };
 
 export default AmountState;
-
-// // Create Context
-// const GlobalContext = createContext(initialState);
-
-// // Procider component
-// const GlobalProvider = ({ children }) => {
-//   // const [state, dispatch] = useReducer(reducer, initialState);
-//   const [loading, setLoading] = useState(false);
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   return (
-//     <GlobalContext.Provider value={(loading, isModalOpen)}>
-//       {children}
-//     </GlobalContext.Provider>
-//   );
-// };
-
-// // make sure use
-// export const useGlobalContext = () => {
-//   return useContext(GlobalContext);
-// };
-
-// export { GlobalContext, GlobalProvider };

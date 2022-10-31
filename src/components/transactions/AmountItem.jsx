@@ -3,28 +3,17 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const AmountItem = (props) => {
   const { transaction, removeTransaction, formatMoney } = props;
-  const sign = transaction.value > 0 ? '+' : '-';
+  const sign = transaction.amount > 0 ? '+' : '-';
 
   return (
     <section className="w-9/12 mx-auto">
-      <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
-        <thead className="uppercase border-b">
-          <tr>
-            <th className="py-3 px-6">No.</th>
-            <th className="py-3 px-6">Date</th>
-            <th className="py-3 px-6">Category</th>
-            <th className="py-3 px-6">Amount</th>
-            <th className="py-3 px-6">Amount in ()</th>
-          </tr>
-        </thead>
-      </table>
-
       <div className={'group-items ' + transaction.type}>
         <li>
+          <span>{transaction.id}</span>
+          <span>{transaction.date}</span>
           <span>{transaction.title}</span>
           <span>
-            {sign}
-            {formatMoney(Math.abs(transaction.value))}
+            {sign} {formatMoney(Math.abs(transaction.amount))}
           </span>
           <button type="button" className="mr-8">
             <FaEdit />

@@ -3,6 +3,9 @@ import { currFormatter } from './util';
 import { Progress } from '@material-tailwind/react';
 import MyComponent from './Chart';
 
+// Reducer
+import BalanceContext from '../context/BalanceContext';
+
 export default function BudgetCard({ name, amount, max, progressPercent }) {
   progressPercent = +parseFloat((amount / max) * 100).toFixed(0);
   //   const [input, setInput] = useState(0);
