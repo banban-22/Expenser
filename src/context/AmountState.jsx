@@ -1,8 +1,9 @@
 import React, { useReducer, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import AmountStateContext from './AmountStateContext';
 import AmountStateReducer from '../components/reducers/AmountStateReducer';
 
-const AmountState = (props) => {
+export const AmountState = (props) => {
   // Initial state
   const initialState = {
     transactions: [],
@@ -21,6 +22,7 @@ const AmountState = (props) => {
 
   const handleValues = (e) => {
     console.log([e.target.name], e.target.value);
+    console.log({ ...form });
     handleForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -28,9 +30,10 @@ const AmountState = (props) => {
   };
 
   const addTransaction = (e) => {
+    e.preventDefault();
     const CREATE_EVENT = 'CREATE_EVENT';
     const newTransaction = {
-      id: form.id,
+      id: uuidv4(),
       title: form.title,
       date: form.date,
       amount: Number(form.amount),
@@ -42,7 +45,7 @@ const AmountState = (props) => {
       payload: newTransaction,
     });
 
-    e.preventDefault();
+    console.log(e);
   };
 
   const removeTransaction = (id) => {
@@ -68,5 +71,3 @@ const AmountState = (props) => {
     </AmountStateContext.Provider>
   );
 };
-
-export default AmountState;

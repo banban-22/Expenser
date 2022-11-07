@@ -4,7 +4,7 @@ import AmountInput from './AmountInput';
 import ExpenserApp from './ExpenserApp';
 
 // reducer
-import AmountState from '../../context/AmountState';
+import { AmountState } from '../../context/AmountState';
 import { BalanceState } from '../../context/BalanceState';
 
 const Activities = () => {

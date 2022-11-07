@@ -21,7 +21,7 @@ const ExpenserApp = () => {
     addBalance({ totalBalance: valueTotal });
 
     // income
-    let positives = transactions.filter((item) => item.type === 'positive');
+    let positives = transactions.filter((item) => item.type == 'positive');
 
     // sum of positive values
     const sumPositives = positives.reduce((valAcc, valArr) => {
@@ -32,7 +32,7 @@ const ExpenserApp = () => {
     addBalance({ income: sumPositives });
 
     // expense
-    let negatives = transactions.filter((item) => item.type === 'negative');
+    let negatives = transactions.filter((item) => item.type == 'negative');
     // sum of negative value
     const sumNegatives = negatives.reduce((valAcc, valArr) => {
       return valAcc + valArr.value;
@@ -40,10 +40,10 @@ const ExpenserApp = () => {
     console.log('SumNegatives:', sumNegatives);
 
     addBalance({ expense: sumNegatives });
-  }, [addBalance, transactions]);
+  }, [transactions]);
 
   return (
-    <div>
+    <section className="w-9/12 mx-auto">
       <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
         <thead className="uppercase border-b">
           <tr>
@@ -65,7 +65,7 @@ const ExpenserApp = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
 
