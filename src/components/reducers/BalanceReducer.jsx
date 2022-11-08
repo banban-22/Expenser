@@ -1,6 +1,6 @@
-const BalanceReducer = (state, action) => {
-  const ADD_BALANCE = 'ADD_BALANCE';
+import { ADD_BALANCE } from '../../action';
 
+const BalanceReducer = (state, action) => {
   switch (action.type) {
     case ADD_BALANCE:
       console.log('TotalBalanceReducer:', state.totalBalance);

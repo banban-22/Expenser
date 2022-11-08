@@ -42,23 +42,39 @@ const dataSource = {
   },
   data: [
     {
-      label: 'Ice Cream Sandwich',
+      label: 'Grocery',
       value: '1000',
     },
     {
-      label: 'Jelly Bean',
+      label: 'Home',
       value: '5300',
     },
     {
-      label: 'Kitkat',
+      label: 'Travel',
       value: '10500',
     },
     {
-      label: 'Lollipop',
+      label: 'Medical',
       value: '18900',
     },
     {
-      label: 'Marshmallow',
+      label: 'Entertainment',
+      value: '17904',
+    },
+    {
+      label: 'Utilities',
+      value: '17904',
+    },
+    {
+      label: 'Health',
+      value: '17904',
+    },
+    {
+      label: 'Clothes',
+      value: '17904',
+    },
+    {
+      label: 'Others',
       value: '17904',
     },
   ],

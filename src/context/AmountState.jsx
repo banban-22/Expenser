@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AmountStateContext from './AmountStateContext';
 import AmountStateReducer from '../components/reducers/AmountStateReducer';
 
-import { ADD_EVENT, REMOVE_EVENT } from '../action.js';
+import { ADD_EVENT, DELETE_EVENT } from '../action.js';
 
 export const AmountState = (props) => {
   // Initial state
@@ -24,8 +24,6 @@ export const AmountState = (props) => {
   });
 
   const handleValues = (e) => {
-    console.log([e.target.name], e.target.value);
-    console.log({ ...form });
     handleForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -47,13 +45,15 @@ export const AmountState = (props) => {
       type: ADD_EVENT,
       payload: newTransaction,
     });
+    console.log(e);
   };
 
   const removeTransaction = (id) => {
     dispatch({
-      type: REMOVE_EVENT,
+      type: DELETE_EVENT,
       payload: id,
     });
+    console.log(id);
   };
 
   return (

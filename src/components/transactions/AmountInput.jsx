@@ -17,7 +17,7 @@ const AmountInput = () => {
       <header className="flex items-center justify-around ml-10 font-bold">
         <div className="btn-group flex flex-col md:flex-row md:mt-10">
           <button className="btn md:flex" onClick={() => setBudgetModal(true)}>
-            Add Budget
+            Add Transaction
           </button>
           {/* <button className="btn md:flex" onClick={() => setExpenseModal(true)}>
             Add Expense

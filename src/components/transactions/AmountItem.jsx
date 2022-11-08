@@ -3,30 +3,29 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const AmountItem = (props) => {
   const { transaction, removeTransaction, formatMoney } = props;
-  const sign = transaction.amount > 0 ? '+' : '-';
+  const sign = transaction.value > 0 ? '+' : '-';
 
   return (
     <>
-      <tr
+      <div
         key={transaction.id}
-        className="py-3 px-6 border-b hover:bg-blue-gray-500"
+        className="py-3 px-6 border-b flex flex-row justify-around"
       >
-        <td className="py-3 px-6">{transaction.date}</td>
-        <td className="py-3 px-6">{transaction.title}</td>
-        <td className="py-3 px-6">
+        <li className="py-3 px-6">{transaction.date}</li>
+        <li className="py-3 px-6">{transaction.title}</li>
+        <li className="py-3 px-6">
           {sign} {formatMoney(Math.abs(transaction.value))}
-        </td>
-        <td className="py-3 px-6">
-          {sign} {formatMoney(Math.abs(transaction.value))}
-        </td>
+        </li>
 
-        <button className="mr-8">
-          <FaEdit />
-        </button>
-        <button onClick={() => removeTransaction(transaction.id)}>
-          <FaTrash />
-        </button>
-      </tr>
+        <div className="">
+          <button className="mr-8">
+            <FaEdit />
+          </button>
+          <button onClick={() => removeTransaction(transaction.id)}>
+            <FaTrash />
+          </button>
+        </div>
+      </div>
     </>
   );
 };

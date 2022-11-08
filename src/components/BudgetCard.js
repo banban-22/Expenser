@@ -28,14 +28,15 @@ export default function BudgetCard({ name, amount, max, progressPercent }) {
           <Progress
             className="rounded-full align-center"
             color={`${
-              progressPercent < 50
-                ? 'blue'
-                : progressPercent < 75
+              progressPercent >= 0 && progressPercent < 50
+                ? 'indigo'
+                : progressPercent >= 50 && progressPercent < 75
                 ? 'yellow'
                 : 'red'
             }`}
             value={progressPercent}
             label="Completed"
+            variant="filled"
           />
         </div>
         <MyComponent />

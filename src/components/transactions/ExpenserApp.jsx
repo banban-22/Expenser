@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-// import AmountInput from './AmountInput';
+import AmountInput from './AmountInput';
 import AmountItem from './AmountItem';
 
 // reducer
@@ -17,7 +17,6 @@ const ExpenserApp = () => {
       return total;
     }, 0);
     console.log('totalValue: ', valueTotal);
-
     addBalance({ totalBalance: valueTotal });
 
     // income
@@ -40,31 +39,32 @@ const ExpenserApp = () => {
     console.log('SumNegatives:', sumNegatives);
 
     addBalance({ expense: sumNegatives });
-  }, [addBalance, transactions]);
+  }, [transactions]);
 
   return (
-    <section className="w-9/12 mx-auto">
-      <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
+    <>
+      <AmountInput />
+      <table className="table-fixed text-center w-9/12 mt-10 border-solid border-1 border-b">
         <thead className="uppercase border-b">
           <tr>
-            <th className="py-3 px-6">Date</th>
-            <th className="py-3 px-6">Category</th>
-            <th className="py-3 px-6">Amount</th>
+            <th className="py-3">Date</th>
+            <th className="py-3">Category</th>
+            <th className="py-3">Amount</th>
             {/* <th className="py-3 px-6">Amount in ()</th> */}
           </tr>
         </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <AmountItem
-              key={transaction.id}
-              transaction={transaction}
-              formatMoney={formatMoney}
-              removeTransaction={removeTransaction}
-            />
-          ))}
-        </tbody>
       </table>
-    </section>
+      <ul>
+        {transactions.map((transaction) => (
+          <AmountItem
+            key={transaction.id}
+            transaction={transaction}
+            formatMoney={formatMoney}
+            removeTransaction={removeTransaction}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 
