@@ -1,13 +1,13 @@
 const AmountStateReducer = (state, action) => {
-  const CREATE_EVENT = 'CREATE_EVENT';
+  const ADD_EVENT = 'ADD_EVENT';
   const DELETE_EVENT = 'DELETE_EVENT';
   // const EDIT_EVENT = 'EDIT_EVENT';
 
   switch (action.type) {
-    case CREATE_EVENT:
+    case ADD_EVENT:
       return {
         ...state,
-        transactions: [...state.transactions, action.payload],
+        transactions: [action.payload, ...state.transactions],
       };
 
     case DELETE_EVENT:
@@ -23,7 +23,7 @@ const AmountStateReducer = (state, action) => {
   }
 
   // switch (action.type) {
-  //   case CREATE_EVENT:
+  //   case ADD_EVENT:
   //     const event = {
   //       title: action.title,
   //       amount: action.amount,

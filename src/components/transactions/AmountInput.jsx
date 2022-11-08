@@ -65,6 +65,7 @@ const AmountInput = () => {
               type="submit"
               className="modal-button hover:cursor-pointer hover:opacity-75 hover:translate-y-1 hover:translate-x-1"
               value="Add"
+              onClick={() => setBudgetModal(false) || setExpenseModal(false)}
             />
             {/* <button
               onClick={addTransaction}

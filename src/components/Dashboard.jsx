@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import BudgetCard from './BudgetCard';
+import BalanceContext from '../context/BalanceContext';
 import '../index.css';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  // const { formatMoney, expense } = useContext(BalanceContext);
+
   return (
-    <div className="container">
-      <div>
-        <div className="container z-1">
-          <div>
-            <BudgetCard
-              name="Total Expense"
-              amount={1200}
-              max={1500}
-            ></BudgetCard>
+    <Fragment>
+      <div className="container">
+        <div>
+          <div className="container z-1">
+            <div>
+              <BudgetCard
+                name="Total Expense"
+                amount={1200}
+                max={1500}
+              ></BudgetCard>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

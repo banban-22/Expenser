@@ -32,7 +32,8 @@ export const AmountState = (props) => {
 
   const addTransaction = (e) => {
     e.preventDefault();
-    const CREATE_EVENT = 'CREATE_EVENT';
+    const ADD_EVENT = 'ADD_EVENT';
+
     const newTransaction = {
       id: uuidv4(),
       title: form.title,
@@ -42,7 +43,7 @@ export const AmountState = (props) => {
     };
 
     dispatch({
-      type: CREATE_EVENT,
+      type: ADD_EVENT,
       payload: newTransaction,
     });
 
