@@ -12,11 +12,11 @@ const Activities = () => {
     <>
       <BalanceState>
         <AmountState>
-          <AmountInput>
-            <AmountItem>
-              <ExpenserApp />
-            </AmountItem>
-          </AmountInput>
+          {/* <AmountInput>
+           <AmountItem> */}
+          <ExpenserApp />
+          {/* </AmountItem>
+          </AmountInput>*/}
         </AmountState>
       </BalanceState>
     </>

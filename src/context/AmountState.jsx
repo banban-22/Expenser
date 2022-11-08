@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import AmountStateContext from './AmountStateContext';
 import AmountStateReducer from '../components/reducers/AmountStateReducer';
 
+import { ADD_EVENT, REMOVE_EVENT } from '../action.js';
+
 export const AmountState = (props) => {
   // Initial state
   const initialState = {
@@ -15,9 +17,9 @@ export const AmountState = (props) => {
 
   const [form, handleForm] = useState({
     id: null,
-    title: '',
     date: null,
-    amount: null,
+    title: '',
+    value: null,
     type: '',
   });
 
@@ -32,28 +34,24 @@ export const AmountState = (props) => {
 
   const addTransaction = (e) => {
     e.preventDefault();
-    const ADD_EVENT = 'ADD_EVENT';
 
     const newTransaction = {
       id: uuidv4(),
-      title: form.title,
       date: form.date,
-      amount: Number(form.amount),
-      type: form.amount >= 0 ? 'positive' : 'negative',
+      title: form.title,
+      value: +form.value,
+      type: form.value >= 0 ? 'positive' : 'negative',
     };
 
     dispatch({
       type: ADD_EVENT,
       payload: newTransaction,
     });
-
-    console.log(e);
   };
 
   const removeTransaction = (id) => {
-    const DELETE_EVENT = 'DELETE_EVENT';
     dispatch({
-      type: DELETE_EVENT,
+      type: REMOVE_EVENT,
       payload: id,
     });
   };

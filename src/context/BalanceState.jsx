@@ -2,6 +2,8 @@ import React, { useReducer } from 'react';
 import BalanceReducer from '../components/reducers/BalanceReducer';
 import BalanceContext from './BalanceContext';
 
+import { ADD_BALANCE } from '../action.js';
+
 export const BalanceState = (props) => {
   const initialState = {
     totalBalance: 0,
@@ -11,14 +13,12 @@ export const BalanceState = (props) => {
 
   const [state, dispatch] = useReducer(BalanceReducer, initialState);
 
-  const ADD_BALANCE = 'ADD_BALANCE';
-
   const addBalance = (value) => {
     dispatch({ type: ADD_BALANCE, payload: value });
   };
 
   function formatMoney(value) {
-    return new Intl.NumberFormat('', {
+    return new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD',
     }).format(value);

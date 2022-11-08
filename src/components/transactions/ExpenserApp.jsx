@@ -47,11 +47,10 @@ const ExpenserApp = () => {
       <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
         <thead className="uppercase border-b">
           <tr>
-            <th className="py-3 px-6">No.</th>
             <th className="py-3 px-6">Date</th>
             <th className="py-3 px-6">Category</th>
             <th className="py-3 px-6">Amount</th>
-            <th className="py-3 px-6">Amount in ()</th>
+            {/* <th className="py-3 px-6">Amount in ()</th> */}
           </tr>
         </thead>
         <tbody>

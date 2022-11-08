@@ -6,50 +6,28 @@ const AmountItem = (props) => {
   const sign = transaction.amount > 0 ? '+' : '-';
 
   return (
-    <div>
-      {/* <div className={'group-items ' + transaction.type}>
-       <div>
-        <li>
-          <span>{transaction.id}</span>
-          <span>{transaction.date}</span>
-          <span>{transaction.title}</span>
-          <span>
-            {sign} {formatMoney(Math.abs(transaction.amount))}
-          </span>
-          <button type="button" className="mr-8">
-            <FaEdit />
-          </button>
-          <button
-            type="button"
-            onClick={() => removeTransaction(transaction.id)}
-          >
-            <FaTrash />
-          </button>
-        </li>
-      </div> */}
+    <>
       <tr
         key={transaction.id}
         className="py-3 px-6 border-b hover:bg-blue-gray-500"
       >
-        <td className="py-3 px-6">{transaction.id}</td>
         <td className="py-3 px-6">{transaction.date}</td>
         <td className="py-3 px-6">{transaction.title}</td>
         <td className="py-3 px-6">
-          {sign} {formatMoney(Math.abs(transaction.amount))}
+          {sign} {formatMoney(Math.abs(transaction.value))}
         </td>
         <td className="py-3 px-6">
-          {sign} {formatMoney(Math.abs(transaction.amount))}
+          {sign} {formatMoney(Math.abs(transaction.value))}
         </td>
-        <td>
-          <button className="mr-8">
-            <FaEdit />
-          </button>
-          <button onClick={() => removeTransaction(transaction.id)}>
-            <FaTrash />
-          </button>
-        </td>
+
+        <button className="mr-8">
+          <FaEdit />
+        </button>
+        <button onClick={() => removeTransaction(transaction.id)}>
+          <FaTrash />
+        </button>
       </tr>
-    </div>
+    </>
   );
 };
 

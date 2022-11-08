@@ -49,7 +49,7 @@ const AmountInput = () => {
             />
             <input
               type="number"
-              name="amount"
+              name="value"
               placeholder="1,000"
               onChange={handleValues}
               className="input border-2 border-solid  focus:outline-blue"
