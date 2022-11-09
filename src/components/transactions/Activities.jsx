@@ -1,6 +1,4 @@
 import React from 'react';
-import AmountInput from './AmountInput';
-import AmountItem from './AmountItem';
 import ExpenserApp from './ExpenserApp';
 
 // reducer

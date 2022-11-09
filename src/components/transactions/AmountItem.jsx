@@ -7,17 +7,17 @@ const AmountItem = (props) => {
 
   return (
     <>
-      <div
+      <tr
         key={transaction.id}
-        className="py-3 px-6 border-b flex flex-row justify-around"
+        className="py-3 px-6 border-b text-center w-full"
       >
-        <li className="py-3 px-6">{transaction.date}</li>
-        <li className="py-3 px-6">{transaction.title}</li>
-        <li className="py-3 px-6">
+        <td className="py-3 px-6">{transaction.date}</td>
+        <td className="py-3 px-6">{transaction.title}</td>
+        <td className="py-3 px-6">
           {sign} {formatMoney(Math.abs(transaction.value))}
-        </li>
+        </td>
 
-        <div className="">
+        <div className="py-3">
           <button className="mr-8">
             <FaEdit />
           </button>
@@ -25,7 +25,7 @@ const AmountItem = (props) => {
             <FaTrash />
           </button>
         </div>
-      </div>
+      </tr>
     </>
   );
 };

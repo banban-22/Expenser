@@ -40,6 +40,7 @@ const AmountInput = () => {
           <form
             className="flex flex-col rounded-b-3xl"
             onSubmit={addTransaction}
+            noValidate
           >
             <input
               type="date"

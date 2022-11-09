@@ -24,6 +24,7 @@ export const AmountState = (props) => {
   });
 
   const handleValues = (e) => {
+    console.log({ [e.target.name]: e.target.value });
     handleForm({
       ...form,
       [e.target.name]: e.target.value,

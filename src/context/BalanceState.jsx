@@ -21,6 +21,7 @@ export const BalanceState = (props) => {
     return new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD',
+      minimumFractionDigits: 2,
     }).format(value);
   }
 

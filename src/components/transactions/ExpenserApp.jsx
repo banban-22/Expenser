@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 
 import AmountInput from './AmountInput';
 import AmountItem from './AmountItem';
+import Balance from './Balance';
 
 // reducer
 import AmountStateContext from '../../context/AmountStateContext';
@@ -44,26 +45,36 @@ const ExpenserApp = () => {
   return (
     <>
       <AmountInput />
-      <table className="table-fixed text-center w-9/12 mt-10 border-solid border-1 border-b">
-        <thead className="uppercase border-b">
-          <tr>
+      <table className="table-fixed text-center w-full mt-10 border-solid border-1 border-b">
+        <thead className="uppercase font-bold border-b border-1 border-solid">
+          <tr className="hover:bg-blue-gray-300">
             <th className="py-3">Date</th>
             <th className="py-3">Category</th>
             <th className="py-3">Amount</th>
             {/* <th className="py-3 px-6">Amount in ()</th> */}
           </tr>
         </thead>
+
+        <tbody>
+          {transactions.map((transaction) => (
+            <AmountItem
+              key={transaction.id}
+              transaction={transaction}
+              formatMoney={formatMoney}
+              removeTransaction={removeTransaction}
+            />
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <Balance />
+            </td>
+          </tr>
+        </tfoot>
       </table>
-      <ul>
-        {transactions.map((transaction) => (
-          <AmountItem
-            key={transaction.id}
-            transaction={transaction}
-            formatMoney={formatMoney}
-            removeTransaction={removeTransaction}
-          />
-        ))}
-      </ul>
     </>
   );
 };
