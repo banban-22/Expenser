@@ -1,5 +1,4 @@
-import { ADD_EVENT, DELETE_EVENT } from '../../action';
-// const EDIT_EVENT = 'EDIT_EVENT';
+import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT } from '../../action';
 
 const AmountStateReducer = (state, action) => {
   switch (action.type) {
@@ -14,6 +13,16 @@ const AmountStateReducer = (state, action) => {
         ...state,
         transactions: [
           ...state.transactions.filter((item) => item.id !== action.payload),
+        ],
+      };
+
+    case EDIT_EVENT:
+      return {
+        ...state,
+        isEditing: true,
+        transactions: [
+          ...state.transactions.filter((item) => item.id !== action.payload.id),
+          action.payload,
         ],
       };
 

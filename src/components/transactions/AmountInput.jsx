@@ -13,8 +13,8 @@ const AmountInput = () => {
   // };
 
   return (
-    <div className="container">
-      <header className="flex items-center justify-around ml-10 font-bold">
+    <div className="w-full">
+      <header className="flex items-center justify-around ml-10 font-bold w-full">
         <div className="btn-group flex flex-col md:flex-row md:mt-10">
           <button className="btn md:flex" onClick={() => setBudgetModal(true)}>
             Add Transaction
@@ -48,8 +48,12 @@ const AmountInput = () => {
               onChange={handleValues}
               className="categories border-2 border-solid  focus:outline-blue"
             />
+            <label id="value" className="text-sm m-0 p-0">
+              Please put "-" when you spent money
+            </label>
             <input
               type="number"
+              id="value"
               name="value"
               placeholder="1,000"
               onChange={handleValues}

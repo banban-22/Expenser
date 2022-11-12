@@ -2,7 +2,8 @@ import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const AmountItem = (props) => {
-  const { transaction, removeTransaction, formatMoney } = props;
+  const { transaction, removeTransaction, editTransaction, formatMoney } =
+    props;
   const sign = transaction.value > 0 ? '+' : '-';
 
   return (
@@ -18,9 +19,12 @@ const AmountItem = (props) => {
         </td>
 
         <div className="py-3">
-          <button className="mr-8">
+          {/* <button
+            className="mr-8"
+            onClick={() => editTransaction(transaction.id)}
+          >
             <FaEdit />
-          </button>
+          </button> */}
           <button onClick={() => removeTransaction(transaction.id)}>
             <FaTrash />
           </button>

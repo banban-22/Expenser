@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
 import AmountInput from './AmountInput';
 import AmountItem from './AmountItem';
@@ -9,7 +9,8 @@ import AmountStateContext from '../../context/AmountStateContext';
 import BalanceContext from '../../context/BalanceContext';
 
 const ExpenserApp = () => {
-  const { transactions, removeTransaction } = useContext(AmountStateContext);
+  const { transactions, removeTransaction, editTransaction } =
+    useContext(AmountStateContext);
   const { addBalance, formatMoney } = useContext(BalanceContext);
 
   useEffect(() => {
@@ -62,6 +63,7 @@ const ExpenserApp = () => {
               transaction={transaction}
               formatMoney={formatMoney}
               removeTransaction={removeTransaction}
+              editTransaction={editTransaction}
             />
           ))}
         </tbody>
